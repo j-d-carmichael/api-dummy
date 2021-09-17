@@ -4,7 +4,7 @@
   "description": "example generate-it",
   "main": "index.js",
   "scripts": {
-    "generate:server": "generate-it ../api-dummy_d/build/api-dummy_d_1.0.1.yml -y -u -t https://github.com/acrontum/openapi-nodegen-typescript-server.git"
+    "generate:server": "generate-it ../api-dummy_d/build/api-dummy_d_1.0.1.yml -m -u -y -t https://github.com/acrontum/openapi-nodegen-typescript-server.git"
   },
   "repository": {
     "type": "git",
