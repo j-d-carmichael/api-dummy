@@ -1,0 +1,22 @@
+{
+  "name": "api-dummy",
+  "version": "1.0.0",
+  "description": "example generate-it",
+  "main": "index.js",
+  "scripts": {
+    "generate:server": "generate-it ../api-dummy_d/build/api-dummy_d_1.0.1.json -y -u -t https://github.com/acrontum/openapi-nodegen-typescript-server.git"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/j-d-carmichael/api-dummy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/j-d-carmichael/api-dummy/issues"
+  },
+  "homepage": "https://github.com/j-d-carmichael/api-dummy#readme",
+  "devDependencies": {
+    "generate-it": "^5.35.0"
+  }
+}
