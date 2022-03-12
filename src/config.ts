@@ -1,12 +1,33 @@
 import dotenv from 'dotenv';
 import ConfigHelper from 'openapi-nodegen-config-helper';
+import { ConnectionOptions } from 'typeorm/connection/ConnectionOptions';
 
 dotenv.config();
+
+interface ConfigBase {
+  loadSwaggerUIRoute: boolean,
+  swaggerBasicAuth: { basicAuthUname: string, basicAuthPword: string }[],
+  env: string,
+  port: number,
+  corsWhiteList: string,
+  jwtAccessSecret?: string,
+  apiKey?: string,
+  requestWorker: {
+    processes: number,
+    threadsPerProcess: number,
+    timeoutMs: number,
+    silent: boolean
+  }
+}
+
+interface Config extends ConfigBase {
+  mysql: ConnectionOptions;
+}
 
 /**
  * Add and remove config that you need.
  */
-export default {
+const config: Config = {
   // Swagger file
   loadSwaggerUIRoute: ConfigHelper.withDefault('LOAD_SWAGGER_UI_ROUTE', false),
   swaggerBasicAuth: [{
@@ -25,6 +46,18 @@ export default {
   jwtAccessSecret: ConfigHelper.required('JWT_ACCESS_SECRET'),
   apiKey: ConfigHelper.withDefault('API_KEY', false),
 
+  mysql: {
+    type: 'mysql',
+    host: 'localhost',
+    port: 3306,
+    username: 'test',
+    password: 'test',
+    database: 'test',
+    entities: ['src/entity/*.js'],
+    logging: true,
+    synchronize: true
+  },
+
   // Request worker config - allThreadsCount = processes * threadsPerProcess
   requestWorker: {
     processes: Number.parseInt(
@@ -42,3 +75,5 @@ export default {
     silent: true, // disable thread / proc start logs
   }
 };
+
+export default config;

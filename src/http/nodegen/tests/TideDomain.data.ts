@@ -1,8 +1,9 @@
 import * as Joi from 'joi';
 
-export const tideGetQueryOffset = 94;
+export const tideGetQueryOffset = 79;
 
-export const tideGetQueryTextSearch = 'LDj13sX67Up6xPpf3t9i3Q09I5Cr20mRe8iePy2ZUBW83nE1kBe4';
+export const tideGetQueryTextSearch =
+  '1Z8AA3CFaVM0w6Jy7BeriXo1y1wvKRZsXCMAgUPFj5An6BRfzC0slkPkLn8Z844O6JtDXBw7LMFzF9rYXMePD';
 
 export const validationSchemas: Record<string, Joi.AnySchema> = {
   tideGet200: Joi.object({

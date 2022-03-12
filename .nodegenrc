@@ -6,11 +6,7 @@
   "segmentSecondGrouping": 4,
   "helpers": {
     "stub": {
-      "jwtType": "JwtAccess",
-      "requestType": "NodegenRequest"
-    },
-    "tests": {
-      "outDir": "src/domains/__tests__"
+      "requestType": "Nodnpm run geegenRequest"
     },
     "objectReduceByMapOptions": {
       "allowNullish": false,

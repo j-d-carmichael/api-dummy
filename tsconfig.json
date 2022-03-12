@@ -13,6 +13,11 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
+    "lib": [
+      "es5",
+      "es6",
+      "dom"
+    ],
     "paths": {
       "@constants": [
         "src/constants"
@@ -39,7 +44,9 @@
     "plugins": [
       {
         "transform": "@zerollup/ts-transform-paths",
-        "exclude": ["*"]
+        "exclude": [
+          "*"
+        ]
       }
     ]
   },

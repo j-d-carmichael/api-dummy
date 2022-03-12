@@ -7,6 +7,14 @@
       "/home/carmichael/code/opensource/dummys/api-dummy/.openapi-nodegen/cache/compare/src/domains/WeatherDomain.ts": {
         "diff": ""
       }
+    },
+    "2022-03-12T12:17:14.084Z": {
+      "/home/carmichael/code/opensource/dummys/api-dummy/.openapi-nodegen/cache/compare/src/domains/TideDomain.ts": {
+        "diff": ""
+      },
+      "/home/carmichael/code/opensource/dummys/api-dummy/.openapi-nodegen/cache/compare/src/domains/WeatherDomain.ts": {
+        "diff": ""
+      }
     }
   }
 }

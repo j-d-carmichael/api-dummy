@@ -1,4 +1,5 @@
 import {
+  WeatherGetQuery,
   WeatherIdDeletePath,
   WeatherIdGetPath,
   WeatherIdPut,
@@ -11,7 +12,6 @@ import {
 import { WeatherDomainInterface } from '@/http/nodegen/domainInterfaces/WeatherDomainInterface';
 
 import WeatherDomainMock from './__mocks__/WeatherDomainMock';
-import WeatherRepository from '@/repository/WeatherRepository';
 
 class WeatherDomain implements WeatherDomainInterface {
   /**
@@ -20,12 +20,8 @@ class WeatherDomain implements WeatherDomainInterface {
    * Summary: weather search
    * Description: Search for weather objects
    **/
-  public async weatherGet (query: any): Promise<WeatherModels> {
-    return {
-      data: await WeatherRepository.find(),
-      meta: {}
-    };
-
+  public async weatherGet(query: WeatherGetQuery): Promise<WeatherModels> {
+    return WeatherDomainMock.weatherGet(query);
   }
 
   /**
@@ -34,7 +30,7 @@ class WeatherDomain implements WeatherDomainInterface {
    * Summary: weather data
    * Description: Create a new weather record.
    **/
-  public async weatherPost (body: WeatherPost): Promise<WeatherModel> {
+  public async weatherPost(body: WeatherPost): Promise<WeatherModel> {
     return WeatherDomainMock.weatherPost(body);
   }
 
@@ -44,7 +40,7 @@ class WeatherDomain implements WeatherDomainInterface {
    * Summary: lastest weather data
    * Description: Get the latest temperatures
    **/
-  public async weatherLatestGet (): Promise<WeatherModels> {
+  public async weatherLatestGet(): Promise<WeatherModels> {
     return WeatherDomainMock.weatherLatestGet();
   }
 
@@ -54,7 +50,7 @@ class WeatherDomain implements WeatherDomainInterface {
    * Summary: weather set to rain
    * Description: Reset awful sunny weather to excellent rainy weather
    **/
-  public async weatherIdDelete (params: WeatherIdDeletePath): Promise<any> {
+  public async weatherIdDelete(params: WeatherIdDeletePath): Promise<any> {
     return WeatherDomainMock.weatherIdDelete(params);
   }
 
@@ -64,7 +60,7 @@ class WeatherDomain implements WeatherDomainInterface {
    * Summary: One weather object
    * Description: Get the full weather object
    **/
-  public async weatherIdGet (params: WeatherIdGetPath): Promise<WeatherModel> {
+  public async weatherIdGet(params: WeatherIdGetPath): Promise<WeatherModel> {
     return WeatherDomainMock.weatherIdGet(params);
   }
 
@@ -74,7 +70,7 @@ class WeatherDomain implements WeatherDomainInterface {
    * Summary: weather data
    * Description: Create a new weather record.
    **/
-  public async weatherIdPut (
+  public async weatherIdPut(
     body: WeatherIdPut,
     params: WeatherIdPutPath
   ): Promise<WeatherModel> {

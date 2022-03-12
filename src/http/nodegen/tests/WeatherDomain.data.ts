@@ -1,26 +1,26 @@
 import * as Joi from 'joi';
 
-export const weatherGetQueryOffset = 60;
+export const weatherGetQueryOffset = 11;
 
-export const weatherGetQueryTextSearch = '3tX0brDUqMXjEOQk81jRuIhRrhRBomLcnlBPyR1WzZk3XwveeGCpO9o3akZrlk4kS';
+export const weatherGetQueryTextSearch = 'rM49eC14dMk07ODWG5ZrFEEpzgajmlP7TXXzzgz';
 
 export const weatherPostBodyWeatherPost = {
-  date: '2013-08-05',
-  location: 'KwN7yRG6npCLsy4xDZjwjVG6Hvtxl1aIoKzRybL4kh3w6qjO2ddOpWWccVUuH',
-  cloudCoverPercentage: 6,
-  humidityPercentage: 48,
-  temperature: 10,
+  date: '1973-02-01',
+  location: '2PtkzZXnAE8ZxlejQ',
+  cloudCoverPercentage: 45,
+  humidityPercentage: 4,
+  temperature: 5,
 };
 
-export const pathId = 28;
+export const pathId = 12;
 
 export const weatherIdPutBodyWeatherIdPut = {
-  date: '2003-06-10',
-  location: 'fWie3Ot64oHMvZIcjCBZdsWc4SCZQK6s',
-  cloudCoverPercentage: 27,
-  humidityPercentage: 96,
-  temperature: 73,
-  id: 64,
+  date: '2014-08-28',
+  location: 'fFOios6PaFF3vbrAbMKTz5F1zhuI22rMoUtPzrlH7CqlYXUWzsOFpK1AdoFGJqzrhrqnUSXlRNGuXcsdqDHX',
+  cloudCoverPercentage: 63,
+  humidityPercentage: 43,
+  temperature: 59,
+  id: 93,
 };
 
 export const validationSchemas: Record<string, Joi.AnySchema> = {
