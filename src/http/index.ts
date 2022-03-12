@@ -11,12 +11,6 @@ export interface Http {
 }
 
 export interface HttpOptions {
-  // a preconfigured express app, if present the api will use this express app opposed to generating a new one.
-  app?: Express;
-
-  // Options injectable into the routes importer
-  routesImporter?: RoutesImporter;
-
   // An array of valid express ApplicationRequestHandlers (middlewares) injected BEFORE loading routes
   requestMiddleware?: any | [string, any][];
 
@@ -44,7 +38,7 @@ export interface HttpOptions {
 }
 
 export default async (port: number, options: HttpOptions = {}): Promise<Http> => {
-  const app = options.app || express();
+  const app = express();
 
   const useMiddlewares = (requestHandlers: Array<(...args: any) => any> | Array<[string, any]>) => {
     requestHandlers.forEach((handler: any) => {
@@ -63,7 +57,7 @@ export default async (port: number, options: HttpOptions = {}): Promise<Http> =>
   }
 
   // The actual API routes
-  routesImporter(app, options?.routesImporter);
+  routesImporter(app);
 
   // Error/ response middlewares
   app.use(handleExpress404());

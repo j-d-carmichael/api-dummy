@@ -2,11 +2,16 @@
   "nodegenDir": "src/http",
   "nodegenMockDir": "src/domains/__mocks__",
   "nodegenType": "server",
+  "injectionOverwrites": [
+    {
+      "url": "https://github.com/j-d-carmichael/tester.git"
+    }
+  ],
   "segmentFirstGrouping": 2,
   "segmentSecondGrouping": 4,
   "helpers": {
     "stub": {
-      "requestType": "Nodnpm run geegenRequest"
+      "requestType": "NodgenRequest"
     },
     "objectReduceByMapOptions": {
       "allowNullish": false,

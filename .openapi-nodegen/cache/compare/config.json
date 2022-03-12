@@ -1,6 +1,6 @@
 {
   "versions": {
-    "2022-03-12T11:13:12.166Z": {
+    "2022-03-12T20:54:37.791Z": {
       "/home/carmichael/code/opensource/dummys/api-dummy/.openapi-nodegen/cache/compare/src/domains/TideDomain.ts": {
         "diff": ""
       },
@@ -8,7 +8,7 @@
         "diff": ""
       }
     },
-    "2022-03-12T12:17:14.084Z": {
+    "2022-03-12T21:01:13.064Z": {
       "/home/carmichael/code/opensource/dummys/api-dummy/.openapi-nodegen/cache/compare/src/domains/TideDomain.ts": {
         "diff": ""
       },
