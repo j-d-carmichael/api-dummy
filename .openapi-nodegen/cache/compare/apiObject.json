@@ -1,0 +1,914 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.1",
+    "title": "api-dummy_d",
+    "description": "A sample API",
+    "contact": {
+      "name": "Swagger API Team",
+      "email": "john@boats.io",
+      "url": "https://github.com/johndcarmichael/boats/"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "host": "api.example.com",
+  "securityDefinitions": {
+    "apiKey": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "x-api-key"
+    }
+  },
+  "paths": {
+    "/tide": {
+      "get": {
+        "tags": [
+          "weather"
+        ],
+        "summary": "weather search",
+        "description": "Search for weather objects",
+        "operationId": "tideGet",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "type": "integer",
+            "description": "The number of items to skip before starting to collect the result set."
+          },
+          {
+            "in": "query",
+            "name": "textSearch",
+            "required": false,
+            "type": "string",
+            "description": "Search string to query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful fetch",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "meta": {
+                  "type": "object",
+                  "properties": {
+                    "totalResultCount": {
+                      "type": "number"
+                    },
+                    "offset": {
+                      "type": "number"
+                    },
+                    "limit": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "date": {
+                        "type": "string",
+                        "format": "date"
+                      },
+                      "location": {
+                        "type": "string"
+                      },
+                      "cloudCoverPercentage": {
+                        "type": "integer"
+                      },
+                      "humidityPercentage": {
+                        "type": "integer"
+                      },
+                      "temperature": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "x-request-definitions": {
+          "query": {
+            "name": "TideGetQuery",
+            "params": [
+              "parameters.QueryOffset",
+              "parameters.QueryTextSearch"
+            ],
+            "interfaceText": {
+              "outputString": "\nexport interface TideGetQuery {\n    /**\n     * The number of items to skip before starting to collect the result set.\n     */\n    offset?: number;\n    /**\n     * Search string to query\n     */\n    textSearch?: string;\n}\n\n"
+            }
+          }
+        },
+        "x-response-definitions": {
+          "200": "WeatherModels"
+        }
+      },
+      "endpointName": "tide",
+      "groupName": "tide"
+    },
+    "/weather": {
+      "get": {
+        "tags": [
+          "weather"
+        ],
+        "summary": "weather search",
+        "description": "Search for weather objects",
+        "operationId": "weatherGet",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "type": "integer",
+            "description": "The number of items to skip before starting to collect the result set."
+          },
+          {
+            "in": "query",
+            "name": "textSearch",
+            "required": false,
+            "type": "string",
+            "description": "Search string to query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful fetch",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "meta": {
+                  "type": "object",
+                  "properties": {
+                    "totalResultCount": {
+                      "type": "number"
+                    },
+                    "offset": {
+                      "type": "number"
+                    },
+                    "limit": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "date": {
+                        "type": "string",
+                        "format": "date"
+                      },
+                      "location": {
+                        "type": "string"
+                      },
+                      "cloudCoverPercentage": {
+                        "type": "integer"
+                      },
+                      "humidityPercentage": {
+                        "type": "integer"
+                      },
+                      "temperature": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "x-request-definitions": {
+          "query": {
+            "name": "WeatherGetQuery",
+            "params": [
+              "parameters.QueryOffset",
+              "parameters.QueryTextSearch"
+            ],
+            "interfaceText": {
+              "outputString": "\nexport interface WeatherGetQuery {\n    /**\n     * The number of items to skip before starting to collect the result set.\n     */\n    offset?: number;\n    /**\n     * Search string to query\n     */\n    textSearch?: string;\n}\n\n"
+            }
+          }
+        },
+        "x-response-definitions": {
+          "200": "WeatherModels"
+        }
+      },
+      "post": {
+        "tags": [
+          "weather"
+        ],
+        "summary": "weather data",
+        "description": "Create a new weather record.",
+        "operationId": "weatherPost",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "weatherPost",
+            "description": "Optional description in *Markdown*",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "date": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "location": {
+                  "type": "string"
+                },
+                "cloudCoverPercentage": {
+                  "type": "integer"
+                },
+                "humidityPercentage": {
+                  "type": "integer"
+                },
+                "temperature": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful temp creation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "date": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "location": {
+                  "type": "string"
+                },
+                "cloudCoverPercentage": {
+                  "type": "integer"
+                },
+                "humidityPercentage": {
+                  "type": "integer"
+                },
+                "temperature": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "422": {
+            "description": "Invalid form data provided"
+          }
+        },
+        "x-permission": "apiDummyDCreateWeather",
+        "x-request-definitions": {
+          "body": {
+            "name": "WeatherPost",
+            "params": [
+              {
+                "name": "WeatherPost",
+                "path": "definitions.WeatherPost"
+              }
+            ],
+            "interfaceText": {
+              "outputString": "\nexport interface WeatherPost {\n    cloudCoverPercentage?: number;\n    date?:                 Date;\n    humidityPercentage?:   number;\n    location?:             string;\n    temperature?:          number;\n}\n\n"
+            }
+          }
+        },
+        "x-response-definitions": {
+          "200": "WeatherModel"
+        }
+      },
+      "endpointName": "weather",
+      "groupName": "weather"
+    },
+    "/weather/latest": {
+      "get": {
+        "tags": [
+          "weather"
+        ],
+        "summary": "lastest weather data",
+        "description": "Get the latest temperatures",
+        "operationId": "weatherLatestGet",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful fetch",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "meta": {
+                  "type": "object",
+                  "properties": {
+                    "totalResultCount": {
+                      "type": "number"
+                    },
+                    "offset": {
+                      "type": "number"
+                    },
+                    "limit": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "date": {
+                        "type": "string",
+                        "format": "date"
+                      },
+                      "location": {
+                        "type": "string"
+                      },
+                      "cloudCoverPercentage": {
+                        "type": "integer"
+                      },
+                      "humidityPercentage": {
+                        "type": "integer"
+                      },
+                      "temperature": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Temp not found"
+          }
+        },
+        "x-request-definitions": {},
+        "x-response-definitions": {
+          "200": "WeatherModels"
+        }
+      },
+      "endpointName": "weather",
+      "groupName": "weather"
+    },
+    "/weather/{id}": {
+      "delete": {
+        "tags": [
+          "weather"
+        ],
+        "summary": "weather set to rain",
+        "description": "Reset awful sunny weather to excellent rainy weather",
+        "operationId": "weatherIdDelete",
+        "x-filename": "delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "description": "Numeric ID of object to fetch"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "x-request-definitions": {
+          "path": {
+            "name": "WeatherIdDeletePath",
+            "params": [
+              "parameters.PathId"
+            ],
+            "interfaceText": {
+              "outputString": "\nexport interface WeatherIdDeletePath {\n    /**\n     * Numeric ID of object to fetch\n     */\n    id: number;\n}\n\n"
+            }
+          }
+        },
+        "x-response-definitions": {}
+      },
+      "get": {
+        "tags": [
+          "weather"
+        ],
+        "summary": "One weather object",
+        "description": "Get the full weather object",
+        "operationId": "weatherIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "description": "Numeric ID of object to fetch"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful fetch",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "date": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "location": {
+                  "type": "string"
+                },
+                "cloudCoverPercentage": {
+                  "type": "integer"
+                },
+                "humidityPercentage": {
+                  "type": "integer"
+                },
+                "temperature": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "x-request-definitions": {
+          "path": {
+            "name": "WeatherIdGetPath",
+            "params": [
+              "parameters.PathId"
+            ],
+            "interfaceText": {
+              "outputString": "\nexport interface WeatherIdGetPath {\n    /**\n     * Numeric ID of object to fetch\n     */\n    id: number;\n}\n\n"
+            }
+          }
+        },
+        "x-response-definitions": {
+          "200": "WeatherModel"
+        }
+      },
+      "put": {
+        "tags": [
+          "weather"
+        ],
+        "summary": "weather data",
+        "description": "Create a new weather record.",
+        "operationId": "weatherIdPut",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "description": "Numeric ID of object to fetch"
+          },
+          {
+            "in": "body",
+            "name": "weatherIdPut",
+            "description": "Optional description in *Markdown*",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "date": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "location": {
+                  "type": "string"
+                },
+                "cloudCoverPercentage": {
+                  "type": "integer"
+                },
+                "humidityPercentage": {
+                  "type": "integer"
+                },
+                "temperature": {
+                  "type": "number"
+                },
+                "id": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful temp creation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "date": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "location": {
+                  "type": "string"
+                },
+                "cloudCoverPercentage": {
+                  "type": "integer"
+                },
+                "humidityPercentage": {
+                  "type": "integer"
+                },
+                "temperature": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "422": {
+            "description": "Invalid form data provided"
+          }
+        },
+        "x-request-definitions": {
+          "body": {
+            "name": "WeatherIdPut",
+            "params": [
+              {
+                "name": "WeatherIdPut",
+                "path": "definitions.WeatherPut"
+              }
+            ],
+            "interfaceText": {
+              "outputString": "\nexport interface WeatherIdPut {\n    cloudCoverPercentage?: number;\n    date?:                 Date;\n    humidityPercentage?:   number;\n    id?:                   number;\n    location?:             string;\n    temperature?:          number;\n}\n\n"
+            }
+          },
+          "path": {
+            "name": "WeatherIdPutPath",
+            "params": [
+              "parameters.PathId"
+            ],
+            "interfaceText": {
+              "outputString": "\nexport interface WeatherIdPutPath {\n    /**\n     * Numeric ID of object to fetch\n     */\n    id: number;\n}\n\n"
+            }
+          }
+        },
+        "x-response-definitions": {
+          "200": "WeatherModel"
+        }
+      },
+      "endpointName": "weather",
+      "groupName": "weather"
+    }
+  },
+  "parameters": {
+    "PathId": {
+      "in": "path",
+      "name": "id",
+      "type": "integer",
+      "required": true,
+      "description": "Numeric ID of object to fetch"
+    },
+    "QueryOffset": {
+      "in": "query",
+      "name": "offset",
+      "required": false,
+      "type": "integer",
+      "description": "The number of items to skip before starting to collect the result set."
+    },
+    "QueryTextSearch": {
+      "in": "query",
+      "name": "textSearch",
+      "required": false,
+      "type": "string",
+      "description": "Search string to query"
+    }
+  },
+  "definitions": {
+    "GenericSearchMeta": {
+      "type": "object",
+      "properties": {
+        "totalResultCount": {
+          "type": "number"
+        },
+        "offset": {
+          "type": "number"
+        },
+        "limit": {
+          "type": "number"
+        }
+      }
+    },
+    "JwtAccessModel": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        }
+      }
+    },
+    "LocationPatch": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "coordinates": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "LocationPost": {
+      "type": "object",
+      "required": [
+        "name",
+        "coordinates"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "coordinates": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "LocationPut": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "WeatherModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "location": {
+          "type": "string"
+        },
+        "cloudCoverPercentage": {
+          "type": "integer"
+        },
+        "humidityPercentage": {
+          "type": "integer"
+        },
+        "temperature": {
+          "type": "number"
+        }
+      }
+    },
+    "WeatherModels": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "type": "object",
+          "properties": {
+            "totalResultCount": {
+              "type": "number"
+            },
+            "offset": {
+              "type": "number"
+            },
+            "limit": {
+              "type": "number"
+            }
+          }
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "location": {
+                "type": "string"
+              },
+              "cloudCoverPercentage": {
+                "type": "integer"
+              },
+              "humidityPercentage": {
+                "type": "integer"
+              },
+              "temperature": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      }
+    },
+    "WeatherPost": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "location": {
+          "type": "string"
+        },
+        "cloudCoverPercentage": {
+          "type": "integer"
+        },
+        "humidityPercentage": {
+          "type": "integer"
+        },
+        "temperature": {
+          "type": "number"
+        }
+      }
+    },
+    "WeatherPut": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "location": {
+          "type": "string"
+        },
+        "cloudCoverPercentage": {
+          "type": "integer"
+        },
+        "humidityPercentage": {
+          "type": "integer"
+        },
+        "temperature": {
+          "type": "number"
+        },
+        "id": {
+          "type": "integer"
+        }
+      }
+    }
+  },
+  "interfaces": [
+    {
+      "name": "GenericSearchMeta",
+      "content": {
+        "outputString": "\nexport interface GenericSearchMeta {\n    limit?:            number;\n    offset?:           number;\n    totalResultCount?: number;\n}\n\n"
+      }
+    },
+    {
+      "name": "JwtAccessModel",
+      "content": {
+        "outputString": "\nexport interface JwtAccessModel {\n    userId?: string;\n}\n\n"
+      }
+    },
+    {
+      "name": "LocationPatch",
+      "content": {
+        "outputString": "\nexport interface LocationPatch {\n    coordinates?: string[];\n    name?:        string;\n}\n\n"
+      }
+    },
+    {
+      "name": "LocationPost",
+      "content": {
+        "outputString": "\nexport interface LocationPost {\n    coordinates: string[];\n    name:        string;\n}\n\n"
+      }
+    },
+    {
+      "name": "LocationPut",
+      "content": {
+        "outputString": "\nexport interface LocationPut {\n    name: string;\n}\n\n"
+      }
+    },
+    {
+      "name": "TideGetQuery",
+      "content": {
+        "outputString": "\nexport interface TideGetQuery {\n    /**\n     * The number of items to skip before starting to collect the result set.\n     */\n    offset?: number;\n    /**\n     * Search string to query\n     */\n    textSearch?: string;\n}\n\n"
+      }
+    },
+    {
+      "name": "WeatherGetQuery",
+      "content": {
+        "outputString": "\nexport interface WeatherGetQuery {\n    /**\n     * The number of items to skip before starting to collect the result set.\n     */\n    offset?: number;\n    /**\n     * Search string to query\n     */\n    textSearch?: string;\n}\n\n"
+      }
+    },
+    {
+      "name": "WeatherIdDeletePath",
+      "content": {
+        "outputString": "\nexport interface WeatherIdDeletePath {\n    /**\n     * Numeric ID of object to fetch\n     */\n    id: number;\n}\n\n"
+      }
+    },
+    {
+      "name": "WeatherIdGetPath",
+      "content": {
+        "outputString": "\nexport interface WeatherIdGetPath {\n    /**\n     * Numeric ID of object to fetch\n     */\n    id: number;\n}\n\n"
+      }
+    },
+    {
+      "name": "WeatherIdPut",
+      "content": {
+        "outputString": "\nexport interface WeatherIdPut {\n    cloudCoverPercentage?: number;\n    date?:                 Date;\n    humidityPercentage?:   number;\n    id?:                   number;\n    location?:             string;\n    temperature?:          number;\n}\n\n"
+      }
+    },
+    {
+      "name": "WeatherIdPutPath",
+      "content": {
+        "outputString": "\nexport interface WeatherIdPutPath {\n    /**\n     * Numeric ID of object to fetch\n     */\n    id: number;\n}\n\n"
+      }
+    },
+    {
+      "name": "WeatherModel",
+      "content": {
+        "outputString": "\nexport interface WeatherModel {\n    cloudCoverPercentage?: number;\n    date?:                 Date;\n    humidityPercentage?:   number;\n    id?:                   number;\n    location?:             string;\n    temperature?:          number;\n}\n\n"
+      }
+    },
+    {
+      "name": "WeatherModels",
+      "content": {
+        "outputString": "\nexport interface WeatherModels {\n    data?: Datum[];\n    meta?: Meta;\n}\n\nexport interface Datum {\n    cloudCoverPercentage?: number;\n    date?:                 Date;\n    humidityPercentage?:   number;\n    id?:                   number;\n    location?:             string;\n    temperature?:          number;\n}\n\nexport interface Meta {\n    limit?:            number;\n    offset?:           number;\n    totalResultCount?: number;\n}\n\n"
+      }
+    },
+    {
+      "name": "WeatherPost",
+      "content": {
+        "outputString": "\nexport interface WeatherPost {\n    cloudCoverPercentage?: number;\n    date?:                 Date;\n    humidityPercentage?:   number;\n    location?:             string;\n    temperature?:          number;\n}\n\n"
+      }
+    },
+    {
+      "name": "WeatherPut",
+      "content": {
+        "outputString": "\nexport interface WeatherPut {\n    cloudCoverPercentage?: number;\n    date?:                 Date;\n    humidityPercentage?:   number;\n    id?:                   number;\n    location?:             string;\n    temperature?:          number;\n}\n\n"
+      }
+    }
+  ],
+  "operationIds": [],
+  "basePath": "/",
+  "groupNamesWithFirstUrlSegment": {
+    "tide": "tide",
+    "weather": "weather"
+  },
+  "endpoints": [
+    "tide",
+    "weather"
+  ]
+}

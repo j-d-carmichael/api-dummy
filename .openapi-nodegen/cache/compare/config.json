@@ -1,0 +1,12 @@
+{
+  "versions": {
+    "2022-03-12T11:13:12.166Z": {
+      "/home/carmichael/code/opensource/dummys/api-dummy/.openapi-nodegen/cache/compare/src/domains/TideDomain.ts": {
+        "diff": ""
+      },
+      "/home/carmichael/code/opensource/dummys/api-dummy/.openapi-nodegen/cache/compare/src/domains/WeatherDomain.ts": {
+        "diff": ""
+      }
+    }
+  }
+}
