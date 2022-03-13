@@ -2,9 +2,9 @@
   "nodegenDir": "src/http",
   "nodegenMockDir": "src/domains/__mocks__",
   "nodegenType": "server",
-  "injectionOverwrites": [
+  "injections": [
     {
-      "url": "https://github.com/j-d-carmichael/tester.git"
+      "source": "https://github.com/j-d-carmichael/test-injection-repo.git"
     }
   ],
   "segmentFirstGrouping": 2,
