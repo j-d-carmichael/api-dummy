@@ -25,16 +25,6 @@ export interface HttpOptions {
     // optional error logger which replaces console.error on application error
     errorLogger?: (error: any) => void;
   };
-
-  /**
-   *  @deprecated Use the requestMiddleware instead
-   */
-  preRouteApplicationRequestHandlers?: any | [string, any][];
-
-  /**
-   *  @deprecated Use the errorMiddleware instead
-   */
-  postRouteApplicationRequestHandlers?: any | [string, any][];
 }
 
 export default async (port: number, options: HttpOptions = {}): Promise<Http> => {
